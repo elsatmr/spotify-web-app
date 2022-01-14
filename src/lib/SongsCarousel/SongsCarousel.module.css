@@ -1,0 +1,17 @@
+.title {
+  font-family: Helvetica, sans-serif;
+  color: white;
+  margin-left: 2rem;
+}
+
+.arrows {
+  position: relative;
+  top: 40%;
+  color: white;
+  width: 50px !important;
+  height: 50px !important;
+}
+
+.carouselItemContainer {
+  margin: 1rem;
+}

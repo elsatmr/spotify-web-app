@@ -1,6 +1,6 @@
 import { search } from './SearchReducer';
-import { auth } from './AuthReducer';
+import { audioPlayer } from './AudioPlayerReducer';
 
 export const rootReducer = {
-  reducer: { search },
+  reducer: { search, audioPlayer },
 };

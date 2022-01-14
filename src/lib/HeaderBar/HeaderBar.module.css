@@ -8,6 +8,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  filter: invert(100%);
 }
 
 .inputBase {
@@ -18,23 +19,25 @@
   padding: 5px;
   margin: 8px;
   margin-right: 0px;
-  width: 30%;
+  width: 50%;
 }
 
 .searchIconWrapper {
   background-color: white;
   border-color: lightgray;
   border-style: solid;
+  border-left: none;
   border-width: thin;
-  width: 30%;
+  width: 5%;
   padding: 9px;
 }
 
 .searchBarWrapper {
   position: absolute;
   border-radius: 10%;
-  width: 100%;
+  width: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-left: 25%;
 }

@@ -1,7 +1,7 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { axiosServerRequest, Methods } from '../../utils/AxiosUtils';
 
-export const clearSearchItemAction = createAction<string>('CLEAR_SEARCH_ITEM');
+export const clearSearchItemAction = createAction('CLEAR_SEARCH_ITEM');
 
 export const getSearchItemAction = createAsyncThunk(
   'SearchReducer/getSearchItemAction',

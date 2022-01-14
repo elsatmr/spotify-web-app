@@ -1,13 +1,16 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { getSearchItemAction } from '../actions/SearchActions';
+import {
+  clearSearchItemAction,
+  getSearchItemAction,
+} from '../actions/SearchActions';
 import {
   SearchState,
   SearchObject,
 } from '../../interfaces/SearchItemInterfaces';
-import { iteratorSymbol, objectTraps } from 'immer/dist/internal';
 
 const initialState: SearchState = {
   item: [],
+  isEmpty: true,
 };
 
 export const search = createReducer(initialState, (builder) => {
@@ -19,9 +22,20 @@ export const search = createReducer(initialState, (builder) => {
         id: obj.id,
         name: obj.name,
         artwork: obj.artwork,
+        artistName: obj.artistName,
+        albumName: obj.albumName,
+        genreNames: obj.genreNames,
+        url: obj.url,
+        audioKey: obj.audioKey,
       };
       state.item.push(res);
+      state.isEmpty = false;
+      return console.log('Success');
     });
   });
   builder.addCase(getSearchItemAction.rejected, (state, action) => {});
+  builder.addCase(clearSearchItemAction, (state, action) => {
+    state.item = [];
+    state.isEmpty = true;
+  });
 });

@@ -1,34 +1,33 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import HeaderBar from './lib/HeaderBar/HeaderBar';
-import { useAppDispatch, useAppSelector } from './redux/hooks';
-import { getAccessToken, getAuthCode } from './redux/actions/AuthActions';
-import { accessURLObjects } from './utils/AuthUtils';
-import { Carousel } from '@trendyol-js/react-carousel';
-import CarouselItem from './lib/CarouselItem/CarouselItem';
+import { useAppSelector } from './redux/hooks';
+import SongsCarousel from './lib/SongsCarousel/SongsCarousel';
+import ArtistCarousel from './lib/ArtistsCarousel/ArtistsCarousel';
+import { AlbumsCarousel } from './lib/AlbumsCarousel/AlbumsCarousel';
+import FooterBar from './lib/FooterBar/FooterBar';
+import styles from './App.module.css';
+import ShowsCarousel from './lib/ShowsCarousel/ShowsCarousel';
 
 function App() {
-  const dispatch = useAppDispatch();
-  const searchItemState = useAppSelector((state) => state.search.item);
-  // let accessToken = useAppSelector((state) => state.auth.accessToken);
-  let authCode = window.location.href.match(/code=([^&]*)/);
-  useEffect(() => {
-    if (authCode === null) {
-      dispatch(getAuthCode()).then(
-        (res) => (authCode = window.location.href.match(/code=([^&]*)/))
-      );
-    } else {
-      accessURLObjects.code = authCode[1];
-      dispatch(getAccessToken());
-    }
-  }, []);
+  const searchStateIsEmpty = useAppSelector((state) => state.search.isEmpty);
+  const audioPlayerState = useAppSelector(
+    (state) => state.audioPlayer.audioInfo
+  );
+
   return (
-    <div className="App">
-      <HeaderBar />
-      {/* <Carousel show={3} slide={3} swiping={true}>
-        <CarouselItem title="blablabla" />
-        <CarouselItem title="blablabla" />
-        <CarouselItem title="blablabla" />
-      </Carousel> */}
+    <div className={styles.main}>
+      <div>
+        <HeaderBar />
+      </div>
+      {searchStateIsEmpty ? null : (
+        <div className={styles.carousels}>
+          <SongsCarousel />
+          <ArtistCarousel />
+          <AlbumsCarousel />
+          <ShowsCarousel />
+        </div>
+      )}
+      {audioPlayerState.isPlaying ? <FooterBar /> : null}
     </div>
   );
 }

@@ -1,5 +1,6 @@
 export interface SearchState {
   item: SearchObject[];
+  isEmpty: boolean;
 }
 
 export interface SearchObject {
@@ -11,4 +12,5 @@ export interface SearchObject {
   artistName?: string;
   genreNames?: string;
   url?: string;
+  audioKey?: string;
 }
