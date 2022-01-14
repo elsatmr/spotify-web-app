@@ -1,5 +1,10 @@
 # Yoodli's Music Player App
 
+## Search queries
+kaytranada
+phoenix
+monolog
+
 ## Available Scripts
 
 In the project directory, you can run:
