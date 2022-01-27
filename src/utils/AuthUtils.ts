@@ -16,10 +16,11 @@ export enum Methods {
 }
 
 export const authURLObjects = {
-  response_type: 'code',
+  response_type: 'token',
   client_id: clientID,
   scope: scope,
   redirect_uri: URLS.DEV,
+  show_dialog: true,
 };
 
 export let accessURLObjects = {
@@ -32,6 +33,9 @@ export const authUrl =
   'https://accounts.spotify.com/authorize?' +
   querystring.stringify(authURLObjects);
 
-export const tokenUrl = () =>
-  'https://accounts.spotify.com/api/token?' +
-  querystring.stringify(accessURLObjects);
+export const tokenUrl = () => {
+  return (
+    'https://accounts.spotify.com/api/token?' +
+    querystring.stringify(accessURLObjects)
+  );
+};
