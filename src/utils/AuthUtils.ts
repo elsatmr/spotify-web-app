@@ -6,6 +6,7 @@ const scope: string = 'user-read-private';
 
 enum URLS {
   DEV = 'http://localhost:3000/',
+  SEARCH = 'http://localhost:3000/search',
 }
 
 export enum Methods {
@@ -19,7 +20,7 @@ export const authURLObjects = {
   response_type: 'token',
   client_id: clientID,
   scope: scope,
-  redirect_uri: URLS.DEV,
+  redirect_uri: URLS.SEARCH,
   show_dialog: true,
 };
 
