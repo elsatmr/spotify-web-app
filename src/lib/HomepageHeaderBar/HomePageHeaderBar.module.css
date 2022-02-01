@@ -1,6 +1,7 @@
 .logo {
   width: 7rem;
   margin: 5px;
+  filter: invert(100%);
 }
 
 .barContainer {

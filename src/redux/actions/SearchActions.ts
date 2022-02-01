@@ -5,13 +5,12 @@ export const clearSearchItemAction = createAction('CLEAR_SEARCH_ITEM');
 
 export const getSearchItemAction = createAsyncThunk(
   'SearchReducer/getSearchItemAction',
-  async (arg: string[]) => {
-    const searchTerm = arg[0];
-    // const authToken = arg[1];
+  async (searchTerm: string) => {
     const res = await axiosServerRequest<any>(
       Methods.GET,
-      `/api/v1/auth/search/${searchTerm}`
+      `/api/v1/search/${searchTerm}`
     );
+    console.log(res.data);
     return res.data;
   }
 );

@@ -11,6 +11,10 @@ import {
   clearSearchItemAction,
   getSearchItemAction,
 } from '../../redux/actions/SearchActions';
+import {
+  getAccessToken,
+  getRefreshToken,
+} from '../../redux/actions/AuthActions';
 
 const HeaderBar = () => {
   const dispatch = useAppDispatch();
@@ -42,7 +46,12 @@ const HeaderBar = () => {
                   onKeyPress={async (ev) => {
                     if (ev.key === 'Enter') {
                       dispatch(clearSearchItemAction());
-                      dispatch(getSearchItemAction([newSearch]));
+                      dispatch(getSearchItemAction(newSearch));
+                      dispatch(
+                        getRefreshToken(
+                          window.sessionStorage.getItem('refreshToken')!
+                        )
+                      );
                     }
                   }}
                 />
@@ -51,7 +60,12 @@ const HeaderBar = () => {
                   className={styles.searchIconWrapper}
                   onClick={async () => {
                     dispatch(clearSearchItemAction());
-                    dispatch(getSearchItemAction([newSearch]));
+                    dispatch(getSearchItemAction(newSearch));
+                    dispatch(
+                      getRefreshToken(
+                        window.sessionStorage.getItem('refreshToken')!
+                      )
+                    );
                   }}
                 />
               </div>

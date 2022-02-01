@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { authUrl, tokenUrl, accessURLObjects } from '../../utils/AuthUtils';
+import { authUrl } from '../../utils/AuthUtils';
+import { axiosServerRequest, Methods } from '../../utils/AxiosUtils';
 
 export const getAuthCode = createAsyncThunk('AuthReducer/GetAuth', async () => {
   window.location.href = authUrl;
@@ -9,13 +10,22 @@ export const getAuthCode = createAsyncThunk('AuthReducer/GetAuth', async () => {
 
 export const getAccessToken = createAsyncThunk(
   'AuthReducer/GetAccessToken',
-  async (arg: string) => {
-    accessURLObjects.code = arg;
-    const res = axios.post(tokenUrl(), {
-      headers: {
-        Authorization: `Basic M2JhODZiOWZiYTY3NDYxZThjYmFiYjdhNjQ1ZWRmNDg6MjNiMGE4NWY0NDIwNGM2ZWFjYWJhNTBhODJjOGU0Njg=`,
-      },
-    });
-    return 'abs';
+  async (authCode: string) => {
+    const res = await axiosServerRequest<any>(
+      Methods.GET,
+      `/api/v1/auth/login/${authCode}`
+    );
+    return res.data;
+  }
+);
+
+export const getRefreshToken = createAsyncThunk(
+  'AuthReducer/GetRefreshToken',
+  async (refreshToken: string) => {
+    const res = await axiosServerRequest<any>(
+      Methods.GET,
+      `api/v1/auth/refresh/${refreshToken}`
+    );
+    return res.data;
   }
 );
