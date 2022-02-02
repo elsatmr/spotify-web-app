@@ -19,12 +19,16 @@ const SearchPage = () => {
   );
   const dispatch = useAppDispatch();
   useEffect(() => {
-    if (window.sessionStorage.getItem('accessToken') === '') {
+    if (
+      window.sessionStorage.getItem('accessToken') === '' ||
+      window.sessionStorage.getItem('accessToken') === null
+    ) {
       dispatch(getAccessToken(window.location.href.split('=')[1]));
     } else {
       dispatch(getRefreshToken(window.sessionStorage.getItem('refreshToken')!));
     }
   }, []);
+
   return (
     <div className={styles.main}>
       <div>
