@@ -4,17 +4,16 @@ import styles from './AlbumsCarouselItem.module.css';
 interface Props {
   artwork: string;
   name: string;
-  type: string;
 }
 
-export const AlbumsCarouselItem = ({ artwork, name, type }: Props) => {
+export const AlbumsCarouselItem = ({ artwork, name }: Props) => {
   return (
     <div className={styles.itemContainer}>
       <div className={styles.imageContainer}>
         <img src={artwork} alt="yarbis" />
       </div>
       <div className={styles.itemName}>{name}</div>
-      <div className={styles.typeName}>{type}</div>
+      <div className={styles.typeName}>Album</div>
     </div>
   );
 };

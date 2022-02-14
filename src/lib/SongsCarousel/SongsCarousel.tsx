@@ -7,7 +7,7 @@ import { useAppSelector } from '../../redux/hooks';
 import styles from './SongsCarousel.module.css';
 
 const SongsCarousel = () => {
-  const searchStateItems = useAppSelector((state) => state.search.item);
+  const searchStateItems = useAppSelector((state) => state.search.track);
   return (
     <div>
       <div>
@@ -23,21 +23,19 @@ const SongsCarousel = () => {
           infinite={false}
           responsive={true}
         >
-          {searchStateItems
-            .filter((elem) => elem.type === 'song')
-            .map((item) => {
-              return (
-                <div className={styles.carouselItemContainer}>
-                  <SongsCarouselItem
-                    imgURL={item.artwork}
-                    trackName={item.name}
-                    artistName={item.artistName}
-                    trackURL={item.url}
-                    audioKey={item.audioKey}
-                  />
-                </div>
-              );
-            })}
+          {searchStateItems.map((item) => {
+            return (
+              <div className={styles.carouselItemContainer}>
+                <SongsCarouselItem
+                  imgURL={item.artwork}
+                  trackName={item.name}
+                  artistName={item.artists}
+                  trackURL={item.preview}
+                  audioKey={item.audioKey}
+                />
+              </div>
+            );
+          })}
         </Carousel>
       </div>
     </div>

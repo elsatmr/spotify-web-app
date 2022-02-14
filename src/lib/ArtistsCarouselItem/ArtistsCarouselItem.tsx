@@ -4,10 +4,9 @@ import styles from './ArtistsCarouselItem.module.css';
 interface Props {
   artwork: string;
   name: string;
-  type: string;
 }
 
-const ArtistCarouselItem = ({ artwork, name, type }: Props) => {
+const ArtistCarouselItem = ({ artwork, name }: Props) => {
   return (
     <div className={styles.itemContainer}>
       <div className={styles.imgContainer}>
@@ -16,7 +15,7 @@ const ArtistCarouselItem = ({ artwork, name, type }: Props) => {
         </div>
       </div>
       <div className={styles.itemName}>{name}</div>
-      <div className={styles.typeName}>{type}</div>
+      <div className={styles.typeName}>Artist</div>
     </div>
   );
 };

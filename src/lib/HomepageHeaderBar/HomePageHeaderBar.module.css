@@ -2,8 +2,12 @@
   width: 7rem;
   margin: 5px;
   filter: invert(100%);
+  text-align: center;
 }
 
 .barContainer {
   margin-bottom: 100px;
+}
+
+.logoContainer {
 }

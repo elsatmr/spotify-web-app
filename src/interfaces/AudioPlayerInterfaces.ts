@@ -8,5 +8,5 @@ export interface AudioPlayerObject {
   artistName?: string;
   trackName: string;
   isPlaying: boolean;
-  audioKey?: string;
+  audioKey?: number;
 }

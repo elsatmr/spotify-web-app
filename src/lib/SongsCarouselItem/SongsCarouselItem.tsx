@@ -9,7 +9,7 @@ interface Props {
   trackName: string;
   artistName?: string;
   trackURL?: string;
-  audioKey?: string;
+  audioKey?: number;
 }
 
 const CarouselItem = ({

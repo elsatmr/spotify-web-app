@@ -1,16 +1,30 @@
 export interface SearchState {
-  item: SearchObject[];
+  album: AlbumObject[];
+  artist: ArtistObject[];
+  track: TrackObject[];
+  show: ShowObject[];
   isEmpty: boolean;
 }
 
-export interface SearchObject {
-  type: string;
-  id: string;
+export interface AlbumObject {
   name: string;
   artwork: string;
-  albumName?: string;
-  artistName?: string;
-  genreNames?: string;
-  url?: string;
-  audioKey?: string;
+}
+
+export interface TrackObject {
+  name: string;
+  artwork: string;
+  preview: string;
+  artists: string;
+  audioKey: number;
+}
+
+export interface ArtistObject {
+  name: string;
+  artwork: string;
+}
+
+export interface ShowObject {
+  name: string;
+  artwork: string;
 }

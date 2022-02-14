@@ -7,13 +7,9 @@ const HomePageHeaderBar = () => {
   return (
     <div className={style.barContainer}>
       <Box sx={{ flexGrow: 1 }}>
-        <AppBar
-          position="fixed"
-          style={{ background: 'transparent' }}
-          elevation={1}
-        >
+        <AppBar position="fixed" style={{ background: 'white' }} elevation={1}>
           <Toolbar>
-            <div>
+            <div className={style.logoContainer}>
               <img className={style.logo} src={logo} alt="yarbis" />
             </div>
           </Toolbar>
